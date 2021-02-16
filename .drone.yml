@@ -28,7 +28,7 @@ steps:
   # wait for docker service to be up before running docker build
   - n=0; while [ "$n" -lt 60 ] && [ ! docker stats --no-stream ]; do n=$(( n + 1 )); sleep 1; done
   - docker login -u=$${DOCKER_USERNAME} -p=$${DOCKER_PASSWORD} quay.io
-  - docker tag quay.io/ukhomeofficedigital/dsa-sysdig-metrics$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/dsa-sysdig-metrics:latest
+  - docker tag quay.io/ukhomeofficedigital/dsa-sysdig-metrics:$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/dsa-sysdig-metrics:latest
   - docker push quay.io/ukhomeofficedigital/dsa-sysdig-metrics:$${DRONE_COMMIT_SHA}
   - docker push quay.io/ukhomeofficedigital/dsa-sysdig-metrics:latest
   environment:
