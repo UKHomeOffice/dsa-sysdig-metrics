@@ -1,9 +1,9 @@
+#!/bin/bash
+DATE=`date +%Y%m%d`
+BASE_DIR='/APP/scripts'
+if [ -f $BASE_DIR/api.log ]; then
+    cp $BASE_DIR/api.log $BASE_DIR/api.log.$DATE
+    > $BASE_DIR/api.log
+fi
 
-DATE=`date +%Y%m%d` 
-BASE_DIR='/var/log' 
-if [ -f $BASE_DIR/logname.log ]; then 
-    cp $BASE_DIR/logname.log $BASE_DIR/logname.log.$DATE 
-    > $BASE_DIR/logname.log 
-fi 
-
-find $BASE_DIR -name 'logname.log.*' -a -mtime +3 -exec rm {} \; 
+find $BASE_DIR -name 'api.log.*' -a -mtime +7 -exec rm {} \;

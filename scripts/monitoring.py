@@ -7,7 +7,7 @@ from json import JSONDecodeError
 http_list = range(100,600)
 codes = []
 dict_list = []
-dict_item = {} 
+dict_item = {}
 status_total_count = 0
 
 
@@ -15,7 +15,7 @@ try:
     timenow = datetime.datetime.now()
     current_time = timenow.strftime("%d %m %Y %X")
     f = open("monitoring.log", "a")
-    with open('test.json') as json_file:
+    with open('metrics.json') as json_file:
         data = json.load(json_file)
         for key in data:
             status_code = int(key['http_status'])

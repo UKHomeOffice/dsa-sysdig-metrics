@@ -16,6 +16,4 @@ RUN pip install schedule
 COPY scripts/ /APP/scripts/
 RUN adduser -D -H 1000 && chown -R 1000 /APP
 RUN chmod -R +x /APP/scripts
-RUN chmod +x run.sh
 USER ${USERMAP_UID}
-CMD ["./run.sh"]%
