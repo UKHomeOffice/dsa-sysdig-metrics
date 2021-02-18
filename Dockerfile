@@ -14,6 +14,7 @@ EXPOSE 8080
 RUN pip install requests
 RUN pip install schedule
 COPY scripts/ /APP/scripts/
+COPY scripts/run.sh /APP/run.sh
 RUN adduser -D -H 1000 && chown -R 1000 /APP
 RUN chmod -R +x /APP/scripts
 USER ${USERMAP_UID}
