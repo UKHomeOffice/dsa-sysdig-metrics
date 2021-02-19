@@ -1,5 +1,6 @@
 FROM quay.io/ukhomeofficedigital/python-alpine:3.7.6-alpine3.11
 RUN mkdir -p /APP/scripts/
+RUN mkdir -p /APP/scripts-copy/
 RUN apk update
 RUN apk upgrade
 RUN apk add bash
@@ -14,7 +15,7 @@ EXPOSE 8080
 RUN pip install requests
 RUN pip install schedule
 COPY scripts/ /APP/scripts/
-COPY scripts/ /APP/
+COPY scripts/ /APP/scripts-copy/
 RUN adduser -D -H 1000 && chown -R 1000 /APP
 RUN chmod -R +x /APP/scripts
 USER ${USERMAP_UID}
