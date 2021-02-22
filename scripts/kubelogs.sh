@@ -1,4 +1,7 @@
 #!/bin/bash
+
+shopt -s extglob
+
 list=("api")
 
 function lasttime(){
