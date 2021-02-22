@@ -4,7 +4,7 @@ shopt -s extglob
 
 list=("api")
 
-function lasttime(){
+lasttime(){
     lasttimefile="lastruntime.txt"
     if [ -e $lasttimefile ]; then
         lasttime=$(cat lastruntime.txt)
@@ -16,7 +16,7 @@ function lasttime(){
 
 }
 
-function collectlogs(){
+collectlogs(){
     arguments=("$@")
     for argument in "${arguments[@]}"; do
         for i in $(kubectl get pods | grep "$argument" | awk '{print $1}'); do
