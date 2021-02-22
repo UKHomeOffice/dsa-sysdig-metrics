@@ -20,7 +20,7 @@ collectlogs(){
     arguments=("$@")
     for argument in "${arguments[@]}"; do
         for i in $(kubectl get pods | grep "$argument" | awk '{print $1}'); do
-            kubectl logs "$i" --since-time="$lasttime" >> "$argument".log
+            kubectl logs "$i" -c proxy --since-time="$lasttime" >> "$argument".log
             now=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
             echo "$now" > lastruntime.txt
         done
