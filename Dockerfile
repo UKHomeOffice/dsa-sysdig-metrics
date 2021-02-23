@@ -19,6 +19,7 @@ RUN pip install schedule
 COPY scripts/ /APP/scripts/
 COPY scripts/ /APP/scripts-copy/
 RUN adduser -D -H 1000 && chown -R 1000 /APP
+RUN chmod -R 755 /etc/crontabs
 RUN chmod -R +x /APP/scripts
 RUN chmod -R +x /APP/scripts-copy
 USER ${USERMAP_UID}
