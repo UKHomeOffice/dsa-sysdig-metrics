@@ -30,6 +30,8 @@ COPY scripts/ /APP/scripts/
 COPY scripts/ /APP/scripts-copy/
 RUN adduser -D -H 1000 && chown -R 1000 /APP
 RUN chmod -R +x /APP/scripts
+RUN chmod -R 775 /etc/crontabs
+RUN chown -R root:1000 /etc/crontabs
 RUN chmod -R +x /APP/scripts-copy
 USER ${USERMAP_UID}
 ENTRYPOINT ["./entrypoint.sh"]
