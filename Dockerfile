@@ -7,7 +7,6 @@ RUN apk add bash
 RUN apk add jq
 RUN apk add curl
 RUN apk add --update busybox-suid
-RUN cat /etc/crontabs/root
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin
@@ -15,6 +14,9 @@ ENV USERMAP_UID 1000
 WORKDIR /APP/scripts/
 EXPOSE 8000
 EXPOSE 8080
+RUN apk add --no-cache dcron libcap && \
+    chown 1000:1000 /usr/sbin/crond && \
+    setcap cap_setgid=ep /usr/sbin/crond
 RUN pip install requests
 RUN pip install schedule
 COPY scripts/ /APP/scripts/
