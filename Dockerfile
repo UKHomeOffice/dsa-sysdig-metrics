@@ -14,7 +14,6 @@ ENV USERMAP_UID 1000
 WORKDIR /APP/scripts/
 EXPOSE 8000
 EXPOSE 8080
-RUN echo "* * * * * echo hello > /APP/hello.txt" | crontab - && crond -f -L /dev/stdout
 RUN pip install requests
 RUN pip install schedule
 COPY scripts/ /APP/scripts/
