@@ -1,4 +1,4 @@
 #!/bin/sh
+set -e
 
-# Start cron daemon.
-crond -b -l 8
+echo "* * * * * echo hello > /APP/hello.txt" | crontab - && crond -f -L /dev/stdout

@@ -23,3 +23,4 @@ RUN adduser -D -H 1000 && chown -R 1000 /APP
 RUN chmod -R +x /APP/scripts
 RUN chmod -R +x /APP/scripts-copy
 USER ${USERMAP_UID}
+ENTRYPOINT  ["./entrypoint.sh"]
