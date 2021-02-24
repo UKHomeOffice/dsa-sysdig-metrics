@@ -1,4 +1,9 @@
 #!/bin/sh
-set -e
-crond
-echo "* * * * * echo hello > /APP/hello.txt" | crontab - && crond -f -L /dev/stdout
+touch tracing.json
+python3 expose-port.py
+while true; do
+    ./kubelogs.sh
+    ./converttojson.sh
+    python3 monitoring.py
+    sleep 180
+done

@@ -25,24 +25,20 @@ except FileNotFoundError:
     f.write(f"{current_time} | Error: File 'test.json' was not found")
     f.write(f"\n")
     print("File 'test.json' was not found")
-    time.sleep(5)
     raise
 except KeyError:
     f.write(f"{current_time} | Error: Key error - 'http_status' does not exist in the json file")
     f.write(f"\n")
     print("Key error - 'http_status' does not exist in the json file")
-    time.sleep(5)
     raise
 except JSONDecodeError:
     f.write(f"{current_time} | Error: JSON decode error - there is a problem with how the file is formatted")
     f.write(f"\n")
     print("JSON decode error - there is a problem with decoding the json file, please make sure it is correctly formatted")
-    time.sleep(5)
 except ValueError:
     f.write(f"{current_time} | Error: Value error - value for 'http_status' is not a number")
     f.write(f"\n")
     print("Value error - value for 'http_status' is not a number")
-    time.sleep(5)
     raise
 
 
