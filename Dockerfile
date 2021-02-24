@@ -22,6 +22,7 @@ RUN adduser -D -H 1000 && chown -R 1000 /APP
 RUN chmod -R 775 /etc/crontabs 
 RUN chmod -R +x /APP/scripts
 RUN chmod -R +x /APP/scripts-copy
+RUN touch /var/run/crond.pid
 RUN crond && chown root:1000 /var/run/crond.pid && chmod 775 /var/run/crond.pid
 USER ${USERMAP_UID}
 ENTRYPOINT  ["./entrypoint.sh"]
