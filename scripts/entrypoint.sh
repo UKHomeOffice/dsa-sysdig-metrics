@@ -1,8 +1,8 @@
 #!/bin/sh
 touch tracing.json
-python3 expose-port.py
+python3 expose-port.py &
 while true; do
-    ./kubelogs.sh
+    ./kubelogs.sh 
     ./converttojson.sh
     python3 monitoring.py
     sleep 180
