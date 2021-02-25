@@ -14,6 +14,7 @@ EXPOSE 8000
 EXPOSE 8080
 RUN pip install requests
 RUN pip install schedule
+RUN pip install office365-rest-client
 COPY scripts/ /APP/scripts/
 RUN adduser -D -H 1000 && chown -R 1000 /APP
 RUN chmod -R +x /APP/scripts
