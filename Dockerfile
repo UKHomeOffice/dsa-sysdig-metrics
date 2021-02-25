@@ -1,12 +1,35 @@
 FROM quay.io/ukhomeofficedigital/python-alpine:3.7.6-alpine3.11
 RUN mkdir -p /APP/scripts/
-RUN apk update
-RUN apk upgrade
-RUN apk add bash
-RUN apk add gcc
-RUN apk add jq
-RUN apk add curl
-RUN apk add python3-dev
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
+RUN apk add --update \
+  build-base \
+  cairo \
+  cairo-dev \
+  cargo \
+  freetype-dev \
+  gcc \
+  gdk-pixbuf-dev \
+  gettext \
+  jpeg-dev \
+  lcms2-dev \
+  libffi-dev \
+  musl-dev \
+  openjpeg-dev \
+  openssl-dev \
+  pango-dev \
+  poppler-utils \
+  postgresql-client \
+  postgresql-dev \
+  py-cffi \
+  python3-dev \
+  rust \
+  tcl-dev \
+  tiff-dev \
+  tk-dev \
+  zlib-dev \
+  bash \
+  jq \
+  curl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin
