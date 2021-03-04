@@ -99,7 +99,7 @@ for i in http_list_fe:
         dict_list_fe.append(dict_item_fe)
     f = open("tracing.json", "a")
     f.write("# HELP http_total_status_fe count \n"
-            f"http_total_status_fe {status_total_count}\n")
+            f"http_total_status_fe {status_total_count_fe}\n")
     f.write("# HELP http_status_fe summary \n")
     for item in dict_list_fe:
         f.write(str(item['http_status'])+" "+str(item['count'])+ "\n")
