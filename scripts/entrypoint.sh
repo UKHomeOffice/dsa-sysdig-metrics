@@ -5,5 +5,5 @@ while true; do
     ./kubelogs.sh 
     ./converttojson.sh
     python3 monitoring.py
-    sleep 60
+    sleep 15
 done

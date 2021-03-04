@@ -2,7 +2,7 @@
 
 shopt -s extglob
 
-list=("api")
+list=("api", "frontend")
 
 lasttime(){
     lasttimefile="lastruntime.txt"
