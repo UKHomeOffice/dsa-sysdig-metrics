@@ -81,12 +81,12 @@ except ValueError:
 for i in http_list:
     http_count = codes.count(int(i))
     if http_count >= 1:
-        dict_item = {'http_status' : 'http_status{code=''"'+str(i)+'"''}' , 'count' : http_count}
+        dict_item = {'http_status' : 'http_status_api{code=''"'+str(i)+'"''}' , 'count' : http_count}
         dict_list.append(dict_item)
     f = open("tracing.json", "w")
-    f.write("# HELP http_total_status count \n"
-            f"http_total_status {status_total_count}\n")
-    f.write("# HELP http_status summary \n")
+    f.write("# HELP http_total_status_api count \n"
+            f"http_total_status_api {status_total_count}\n")
+    f.write("# HELP http_status_api summary \n")
     for item in dict_list:
         f.write(str(item['http_status'])+" "+str(item['count'])+ "\n")
 
