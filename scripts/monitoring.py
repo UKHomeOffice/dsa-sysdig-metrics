@@ -11,7 +11,6 @@ dict_item = {}
 status_total_count = 0
 
 
-http_list_fe = range(100,600)
 codes_fe = []
 dict_list_fe = []
 dict_item_fe = {}
@@ -90,17 +89,14 @@ for i in http_list:
     f.write("# HELP http_status summary \n")
     for item in dict_list:
         f.write(str(item['http_status'])+" "+str(item['count'])+ "\n")
-    f.close()
 
-for i in http_list_fe:
     http_count = codes_fe.count(int(i))
     if http_count >= 1:
-        dict_item_fe = {'http_status' : 'http_status_fe{code=''"'+str(i)+'"''}' , 'count' : http_count}
+        dict_item_fe = {'http_status': 'http_status_fe{code=''"' + str(i) + '"''}', 'count': http_count}
         dict_list_fe.append(dict_item_fe)
-    f = open("tracing.json", "a")
     f.write("# HELP http_total_status_fe count \n"
             f"http_total_status_fe {status_total_count_fe}\n")
     f.write("# HELP http_status_fe summary \n")
     for item in dict_list_fe:
-        f.write(str(item['http_status'])+" "+str(item['count'])+ "\n")
+        f.write(str(item['http_status']) + " " + str(item['count']) + "\n")
     f.close()
