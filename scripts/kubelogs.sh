@@ -2,7 +2,8 @@
 
 shopt -s extglob
 
-list=("api", "frontend")
+log=("api")
+log2=("frontend")
 
 lasttime(){
     lasttimefile="lastruntime.txt"
@@ -28,8 +29,8 @@ collectlogs(){
 }
 
 lasttime
-collectlogs "${list[@]}"
-
+collectlogs "${log[@]}"
+collectlogs "${log2[@]}"
 
 # date -u +"%Y-%m-%dT%H:%M:%SZ"
 # podname=$(kubectl get pods | grep nginx | awk '{print $1}' | tail -n +1)
